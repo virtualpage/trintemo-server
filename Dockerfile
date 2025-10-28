@@ -9,6 +9,8 @@ RUN npm install
 
 RUN npx prisma generate
 
+RUN npx prisma db push
+
 COPY . .
 
 RUN npm run build

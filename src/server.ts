@@ -17,4 +17,5 @@ app.use('/api', routes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
+    console.log('Database URL:', process.env.DATABASE_URL);
 });

@@ -5,7 +5,7 @@ export const guestsService = async () => {
     return await prisma.convidado.findMany();
   } catch (err) {
     console.error("Erro guestsService:", err);
-    throw err;
+    throw err; 
   }
 };
 

@@ -14,8 +14,9 @@ model Convidado {
   nome            String
   telefone        String?
   message         String?
-  presenca        Boolean? 
-  bebidaAlcoolica Boolean?  
+  presenca        Boolean?
+  bebidaAlcoolica Boolean?
   step            Int      @default(0)
+
   @@map("convidados")
 }
