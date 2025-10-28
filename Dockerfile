@@ -6,17 +6,16 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 COPY prisma ./prisma/
 
-# Instalar dependências
+# Instalar dependências e gerar Prisma Client (sem DB push)
 RUN npm install
+RUN npx prisma generate
 
-# Copiar o resto do código
+# Copiar o resto do código e fazer build
 COPY . .
+RUN npx tsc
 
-# Build da aplicação
-RUN npx prisma generate && npx tsc
-
-# Expor porta (sem comentários na mesma linha)
+# Expor porta
 EXPOSE 8080
 
-# Comando de inicialização
+# Comando de inicialização (DB push só no runtime quando DATABASE_URL estiver disponível)
 CMD npx prisma db push && node dist/server.js
