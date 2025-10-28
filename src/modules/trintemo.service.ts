@@ -1,8 +1,13 @@
 import { prisma } from '../lib/prisma';
 
 export const guestsService = async () => {
+  try {
     return await prisma.convidado.findMany();
-}
+  } catch (err) {
+    console.error("Erro guestsService:", err);
+    throw err;
+  }
+};
 
 export const newGuestsService = async (nome: string) => {
     await prisma.convidado.createMany({
