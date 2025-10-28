@@ -1,20 +1,19 @@
-FROM node:18-alpine
+FROM node:21-bullseye
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
-COPY prisma ./prisma/
 
 RUN npm install
 
-RUN npx prisma generate
-
-RUN npx prisma db push
-
 COPY . .
 
-RUN npm run build
+RUN npx prisma generate
+
+RUN npx tsc
+
+RUN mkdir -p dist/docs && cp src/docs/swagger.yaml dist/docs/swagger.yaml
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD npx prisma migrate deploy && node dist/server.js

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const trintemo_controller_1 = require("./trintemo.controller");
+const router = (0, express_1.Router)();
+router.get('/guests', trintemo_controller_1.guests);
+router.post('/new-guest/:nome', trintemo_controller_1.newGuest);
+router.patch('/confirmation/:nome', trintemo_controller_1.confirmation);
+router.patch('/not-confirmation/:nome', trintemo_controller_1.notConfirmation);
+router.patch('/drink/:nome', trintemo_controller_1.drink);
+router.patch('/not-drink/:nome', trintemo_controller_1.notDrink);
+router.patch('/message/:nome', trintemo_controller_1.message);
+router.patch('/step/:nome/:step', trintemo_controller_1.step);
+exports.default = router;
