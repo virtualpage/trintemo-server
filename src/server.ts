@@ -5,13 +5,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080; // ← Mude para 8080
+const port = process.env.PORT || 8080; 
 
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-        ? ['https://seusite.com', 'http://localhost:5173'] // ← Adicione seus domínios
+        ? ['https://trintemo.site', 'http://localhost:5173']
         : 'http://localhost:5173',
-    credentials: true, 
 }));
 app.use(express.json());
 
