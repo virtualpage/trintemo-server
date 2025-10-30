@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/guests', guests)
 router.post('/new-guest/:nome', newGuest);
-router.post('/delete-guest/:nome', deleteGuest);
+router.delete('/delete-guest/:nome', deleteGuest);
 
 router.patch('/confirmation/:nome', confirmation);
 router.patch('/not-confirmation/:nome', notConfirmation);

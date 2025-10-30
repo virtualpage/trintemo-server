@@ -13,8 +13,10 @@ export const newGuestsService = async (nome: string) => {
     const slug = nome
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "") 
-        .toLowerCase()
-        .replace(/\s+/g, '-'); 
+        .toLowerCase() 
+        .replace(/\s+/g, "-") 
+        .replace(/-+/g, "-") 
+        .trim();
 
 
     await prisma.convidado.createMany({
