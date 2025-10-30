@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { handleControllerError } from '../utils/errors';
-import { confirmationService, drinkService, guestsService, messageService, newGuestsService, notConfirmationService, notDrinkService, stepService } from './trintemo.service';
+import { confirmationService, deleteGuestsService, drinkService, guestsService, messageService, newGuestsService, notConfirmationService, notDrinkService, stepService } from './trintemo.service';
 
 export const guests = async (req: Request, res: Response): Promise<void> => {
 
@@ -26,6 +26,20 @@ export const newGuest = async (req: Request, res: Response): Promise<void> => {
         handleControllerError(res, error);
     }
 }
+
+export const deleteGuest = async (req: Request, res: Response): Promise<void> => {
+    const convidado = req.params.nome;
+
+    try {
+        await deleteGuestsService(convidado);
+        res.status(204).end();
+        return;
+
+    } catch (error: any) {
+        handleControllerError(res, error);
+    }
+}
+
 export const confirmation = async (req: Request, res: Response): Promise<void> => {
     const convidado = req.params.nome;
 

@@ -18,6 +18,12 @@ export const newGuestsService = async (nome: string) => {
     })
 }
 
+export const deleteGuestsService = async (nome: string) => {
+    await prisma.convidado.deleteMany({
+        where: { nome },
+    })
+}
+
 //----------------------------
 
 export const confirmationService = async  (nome: string) => {
