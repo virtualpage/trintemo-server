@@ -12,6 +12,7 @@ datasource db {
 model Convidado {
   id              Int      @id @default(autoincrement())
   nome            String
+  slug            String?
   telefone        String?
   message         String?
   presenca        Boolean?

@@ -11,7 +11,10 @@ export const guestsService = async () => {
 
 export const newGuestsService = async (nome: string) => {
     await prisma.convidado.createMany({
-        data: {nome},
+        data: {
+            nome,
+            slug: nome.toLowerCase().replace(/\s+/g, '-'),
+        },
     })
 }
 
